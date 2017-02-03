@@ -1,4 +1,4 @@
-// import { data } from "./helper";
+import { data } from "./helper";
 
 
 const container = document.querySelector(".container");
@@ -6,7 +6,8 @@ const container = document.querySelector(".container");
 
 
 const onInit = function() {
-    container.appendChild(document.createTextNode("kontener"));
+
+    container.appendChild(document.createTextNode(data.element));
 };
 
 onInit();
