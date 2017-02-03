@@ -2,52 +2,39 @@ import { data } from "./helper";
 
 const container = document.querySelector(".container");
 
-class Parent {
-    public length:number;
-    private notLength:number;
-    constructor() {
-        this.length = 15;
+class Ball {
+    posX:number;
+    posY:number;
+    dirX:number;
+    dirY:number;
+    
+    constructor(posX:number, posY:number, dirX:number, dirY:number) {
+        this.posX = posX;
+        this.posY = posY;
+        this.dirX = dirX;
+        this.dirY = dirY;
      }
-    getLength() {
-        return this.notLength = 30;
-        
-     }
-}
 
-interface Address {
-    street: string;
-    city: string;
-};
-
-class MyClass extends Parent {
-    width:number;
-    top:number;
-    address:Address;
-
-    constructor(width:number, top:number) {
-        super();
-        this.width = width;
-        this.top = top;
-        
-    }
-
-    getSum(): number {
-        let localCounter:number = this.width + this.top + this.getLength();
-        console.log('localCounter: ', localCounter);
-        return localCounter;
-    }
+    move() {
+        this.posX += this.dirX;
+        this.posY += this.dirY;
+     } 
 
 }
 
-const counter:MyClass = new MyClass(12, 16);
-counter.getSum();
-counter.getLength();
+const ball:Ball = new Ball(100, 100, 1, 1);
 
-console.log("message: ");
+const ballElement: HTMLElement = <HTMLElement>document.getElementsByClassName("ball")[0];
 
-const onInit = function() { };
+setInterval(() => {
+    let posX = ball.posX;
+    let posY = ball.posY;
+    ball.move();
 
-onInit();
+    ballElement.style.left = posX + 'px';
+    ballElement.style.top = posY + 'px';
+}, 10)
+
 
 
 
