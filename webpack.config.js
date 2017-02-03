@@ -12,4 +12,11 @@ module.exports = {
           { test: /\.ts$/, loader: "ts-loader" }
         ]
     },
+    plugins: [
+        new BrowserSyncPlugin({
+            host: "localhost",
+            port: 3000,
+            server: { baseDir: [""] }
+        })
+    ]
 };
